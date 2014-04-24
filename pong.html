@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="images/pong.ico">
+<title>Pong</title>
+<script type="text/javascript" src="scripts/pong.js"></script>
+
+<script>
+
+function startApp(){
+	
+	var prmstr = decodeURIComponent(window.location.search.substr(1));
+	var prmarr = prmstr.split ("&");
+	var params = {};
+	
+	for ( var i = 0; i < prmarr.length; i++) {
+	    var tmparr = prmarr[i].split("=");
+	    params[tmparr[0]] = tmparr[1];
+	}
+	
+	var gameMode = params.gameMode?params.gameMode:"single";
+	var me = params.me?params.me:undefined;
+	var opponent = params.opponent?params.opponent:undefined;
+	
+	var game = new pong();
+	game.initialize(document.getElementById("content"), gameMode, me, opponent);
+}
+
+window.onload = startApp;
+
+</script>
+
+</head>
+
+<body>
+
+<div id="content">
+</div>
+
+</body>
+</html>
