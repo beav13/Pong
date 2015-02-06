@@ -506,8 +506,8 @@ function pong(){
 		ball.speedX = 0;
 		ball.speedY = 0;
 		
-		socket = new WebSocket("ws://razvanarenasumare.no-ip.biz:1339", "echo-protocol");
-		//socket = new WebSocket("ws://localhost:1338", "echo-protocol");
+		var socketPath = "ws://" + window.location.hostname + ":1339";
+		socket = new WebSocket(socketPath, "echo-protocol");
 			
 		socket.addEventListener("open", function(event) {
 			self.appendMessage("Connected.");
